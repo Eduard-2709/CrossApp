@@ -61,3 +61,18 @@ $ du -sh src/Cli/bin/Release/net10.0/win-x64/publish/
 ./publish/self-contained/Cli.exe
 2.  Framework-dependent
 ./publish/framework-dependent/Cli.exe
+
+# Лабораторна робота № 3
+
+# Запуск з файлом за замовчуванням
+dotnet run --project src/Cli
+
+# Запуск з власним файлом
+dotnet run --project src/Cli -- data/sample.csv
+
+# Формат CSV
+
+- Роздільник: `;` (крапка з комою)
+- Заголовок: так є (`id;sku;name;unit;quantity`)
+- Кодування: UTF-8
+- Поля: `Id`, `Sku`, `Name`, `Unit`, `Quantity`
