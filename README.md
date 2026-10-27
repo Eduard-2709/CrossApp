@@ -92,3 +92,12 @@ dotnet run --project src/Cli -- data/sample.csv
 
 ## Запуск
 dotnet run --project src/Cli
+
+# Лабораторна робота № 5
+
+## Запуск
+# У пам'яті (дані зникають після виходу)
+dotnet run --project src/Cli
+
+# У файлі (дані зберігаються)
+dotnet run --project src/Cli -- --file
