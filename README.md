@@ -101,3 +101,18 @@ dotnet run --project src/Cli
 
 # У файлі (дані зберігаються)
 dotnet run --project src/Cli -- --file
+
+# Лабораторна робота № 6
+
+## Запуск
+dotnet run --project src/Cli
+
+# Лабораторна робота № 7
+
+## Запуск
+dotnet run --project src/Cli -- report-top
+dotnet run --project src/Cli -- report-low
+dotnet run --project src/Cli -- report-groups
+dotnet run --project src/Cli -- report-sum
+dotnet run --project src/Cli -- demo-deferred
+dotnet run --project src/Cli -- report-join

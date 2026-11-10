@@ -2,9 +2,6 @@ using Core.Domain;
 
 namespace Core;
 
-/// <summary>
-/// Початкові дані для демонстрації (15-20 записів).
-/// </summary>
 public static class SampleData
 {
     public static IEnumerable<Product> Products()
@@ -23,6 +20,8 @@ public static class SampleData
         yield return Product.Create("P-012", "SKU-012", "Стрічка армуюча", "м", 200);
         yield return Product.Create("P-013", "SKU-013", "Бетоноконтакт", "л", 45);
         yield return Product.Create("P-014", "SKU-014", "Піна монтажна", "шт", 72);
-        yield return Product.Create("P-015", "SKU-015", "Герметик силіконовий", "шт", 110);
+        yield return Product.Create("P-015", "SKU-015", "Герметик силіконовий", "шт", 5); // Дефіцит
+        yield return Product.Create("P-016", "SKU-016", "Скотч малярський", "шт", 8);   // Дефіцит
+        yield return Product.Create("P-017", "SKU-017", "Розчинник уайт-спірит", "л", 2); // Дефіцит
     }
 }
