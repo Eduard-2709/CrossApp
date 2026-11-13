@@ -116,3 +116,5 @@ dotnet run --project src/Cli -- report-groups
 dotnet run --project src/Cli -- report-sum
 dotnet run --project src/Cli -- demo-deferred
 dotnet run --project src/Cli -- report-join
+
+# Where лише описує правило, а Count() змушує його виконатися, тому при зміні колекції результат змінюється. Крок 6 в ході роботи !

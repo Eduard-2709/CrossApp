@@ -11,18 +11,18 @@ public static class ReportService
     // 1) Фільтр + сортування + проєкція (Where, OrderBy, Select)
     public static IReadOnlyList<StockLine> LowStock(IEnumerable<Product> source, int threshold) =>
         source
-            .Where(p => p.Quantity < threshold)
+            .Where(p => p.Quantity < threshold) // залишає тільки дефіцитні товари
             .OrderBy(p => p.Quantity)
             .ThenBy(p => p.Sku, StringComparer.Ordinal)
-            .Select(p => new StockLine(p.Sku, p.Name, p.Quantity, p.Unit))
+            .Select(p => new StockLine(p.Sku, p.Name, p.Quantity, p.Unit)) // перетворюємо сутність на простий Stockline
             .ToList();
 
     // 2) Топ-N зі стабільним порядком (OrderByDescending, ThenBy, Take)
     public static IReadOnlyList<StockLine> TopByQuantity(IEnumerable<Product> source, int n) =>
         source
-            .OrderByDescending(p => p.Quantity)
+            .OrderByDescending(p => p.Quantity) // по спаданню
             .ThenBy(p => p.Sku, StringComparer.Ordinal)
-            .Take(n)
+            .Take(n) // бере перші n-елементи
             .Select(p => new StockLine(p.Sku, p.Name, p.Quantity, p.Unit))
             .ToList();
 
@@ -48,17 +48,6 @@ public static class ReportService
                list.Max(p => p.Quantity));
     }
 
-    // ==========================================================
-    // ДОДАТКОВЕ ЗАВДАННЯ 2: Власний метод-розширення
-    // ==========================================================
-    public static IEnumerable<T> TopBy<T>(
-        this IEnumerable<T> source, 
-        Func<T, int> selector, 
-        int n) =>
-        source
-            .OrderByDescending(selector)
-            .Take(n);
-
     
     // ==========================================================
     // ДОДАТКОВЕ ЗАВДАННЯ 1: Join
@@ -75,3 +64,14 @@ public static class ReportService
         return query.ToList();
     }
 }
+
+    // // ==========================================================
+    // // ДОДАТКОВЕ ЗАВДАННЯ 2: Власний метод-розширення
+    // // ==========================================================
+    // public static IEnumerable<T> TopBy<T>(
+    //     this IEnumerable<T> source, 
+    //     Func<T, int> selector, 
+    //     int n) =>
+    //     source
+    //         .OrderByDescending(selector)
+    //         .Take(n);

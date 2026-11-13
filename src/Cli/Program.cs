@@ -178,6 +178,50 @@ switch (command)
         }
         break;
 
+    case "import-json":
+    {
+        var jsonPath = Path.Combine(AppContext.BaseDirectory, "data", "catalog.json");
+        
+        // Створюємо токен скасування
+        using var cts = new CancellationTokenSource();
+        
+        // Обробка Ctrl+C
+        Console.CancelKeyPress += (_, e) => 
+        { 
+            e.Cancel = true; 
+            cts.Cancel(); 
+            Console.WriteLine("Спроба скасування...");
+        };
+
+        // Для демонстрації таймауту (за бажанням):
+        cts.CancelAfter(TimeSpan.FromSeconds(2));
+
+        try
+        {
+            var importer = new JsonCatalogImporter();
+            int added = await service.ImportAsync(importer, jsonPath, cts.Token);
+            Console.WriteLine($"Імпортовано записів: {added}");
+        }
+        // ВАЖЛИВО: OperationCanceledException має бути ПЕРЕД загальними винятками!
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("Імпорт скасовано.");
+        }
+        catch (DomainException ex)
+        {
+            Console.WriteLine($"Дані відхилено: {ex.Message}");
+        }
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine($"Файл не знайдено: {jsonPath}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Помилка: {ex.Message}");
+        }
+        break;
+    }
+
     default:
         Console.WriteLine("Доступні команди:");
         Console.WriteLine("  report-top      - Топ-5 за залишком");
