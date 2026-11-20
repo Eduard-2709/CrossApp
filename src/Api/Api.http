@@ -1,0 +1,53 @@
+@Api_HostAddress = http://localhost:5080
+
+### Health
+GET {{Api_HostAddress}}/health
+Accept: application/json
+
+### GET список
+GET {{Api_HostAddress}}/api/products
+Accept: application/json
+
+### POST створити
+POST {{Api_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "sku": "A-100",
+  "name": "Цемент M400",
+  "unit": "мішок",
+  "quantity": 40
+}
+
+### GET за id (замініть id на отриманий з POST)
+GET {{Api_HostAddress}}/api/products/8f1c0e2a
+Accept: application/json
+
+### PUT замінити
+PUT {{Api_HostAddress}}/api/products/8f1c0e2a
+Content-Type: application/json
+
+{
+  "sku": "A-100",
+  "name": "Цемент M500",
+  "unit": "мішок",
+  "quantity": 35
+}
+
+### PUT з порожньою назвою -> 400
+PUT {{Api_HostAddress}}/api/products/8f1c0e2a
+Content-Type: application/json
+
+{
+  "sku": "A-100",
+  "name": "",
+  "unit": "мішок",
+  "quantity": 35
+}
+
+### DELETE
+DELETE {{Api_HostAddress}}/api/products/8f1c0e2a
+
+### GET після DELETE -> 404
+GET {{Api_HostAddress}}/api/products/8f1c0e2a
+Accept: application/json

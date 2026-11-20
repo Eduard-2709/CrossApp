@@ -131,3 +131,9 @@ dotnet run --project src/Cli -- import-json
 ## Запуск
 dotnet user-secrets list --project src/Cli
 dotnet run --project src/Cli -- --file report-top
+
+# Лабораторна робота № 10
+
+## Запуск
+dotnet run --project src/Api --urls http://localhost:5080
+http://localhost:5080/scalar/v1

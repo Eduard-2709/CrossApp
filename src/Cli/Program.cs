@@ -40,7 +40,7 @@ ICatalogStore store = useFile
 
 var service = new CatalogService(store);
 
-// 3. Діагностика (як у методичці)
+// 3. Діагностика (як у методичці), читаємо ключ, але друкуємо ЛИШЕ довжину
 var apiKey = config["Integration:ApiKey"];
 Console.WriteLine($"Файл даних : {dataPath}");
 Console.WriteLine(apiKey is null

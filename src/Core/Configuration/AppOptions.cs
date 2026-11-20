@@ -13,10 +13,12 @@ public sealed class StorageOptions
 
     public string ResolveFullPath(string baseDir)
     {
+        // Завдання 1: жодного "C:\" чи "/home/" — усе через Path.Combine
         var root = Path.IsPathRooted(DataPath)
             ? DataPath
             : Path.Combine(baseDir, DataPath);
 
+        // Завдання 1: Path.GetFullPath усуває залежність від CurrentDirectory
         Directory.CreateDirectory(root);
         return Path.GetFullPath(Path.Combine(root, FileName));
     }
