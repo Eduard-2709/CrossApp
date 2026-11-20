@@ -118,3 +118,16 @@ dotnet run --project src/Cli -- demo-deferred
 dotnet run --project src/Cli -- report-join
 
 # Where лише описує правило, а Count() змушує його виконатися, тому при зміні колекції результат змінюється. Крок 6 в ході роботи !
+
+# Лабораторна робота № 8
+
+## Запуск
+dotnet test
+dotnet run --project src/Cli -- --file
+dotnet run --project src/Cli -- import-json
+
+# Лабораторна робота № 9
+
+## Запуск
+dotnet user-secrets list --project src/Cli
+dotnet run --project src/Cli -- --file report-top
